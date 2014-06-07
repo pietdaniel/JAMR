@@ -8,7 +8,7 @@ define([
     initialize: function () {
       console.log("appView initialized");
       this.subView = new GeoView();
-      this.render() 
+      this.render();
     },
 
     render: function() {
