@@ -11,11 +11,3 @@ var User = Backbone.Model.extend({
 });
 
 var defaultUser = new User();
-
-function createUser(user) {
-  // send user
-}
-
-function leave(user, room) {
-  // send message to leave
-}
