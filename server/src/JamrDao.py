@@ -1,17 +1,20 @@
 from User import User 
 from Room import Room 
+from DataSource import DataSource
 
+class JamrDao(object):
+  def __init__(self):
+    this.ds = DataSource()
 
-def createUser(user):
-  user['inst']
-  user['genr']
-  user['uid']
-  user['pos']['lon']
-  user['pos']['lat']
+  def insertUser(user):
+    print 'insert user call'
 
-def createRom(room):
-  users = room['users']
-  room['uid']
-  for user in users: 
-    user['uid']
+  def getUser(uuid):
+    print 'get user call'
+
+  def insertRoom(room):
+    print 'insert room call'
+
+  def getRoom(uuid):
+    print 'get room call'k
 
