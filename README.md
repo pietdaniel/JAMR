@@ -27,6 +27,7 @@ Chat
 
 ------------------------------------------------
 
+<pre>
       +-------------------+
       |  JamrResource.py  |
       +-+-----------------+
@@ -42,15 +43,21 @@ Chat
          +---------+-------+              
          |   DataStore.py  |              
          +-----------------+
-
+</pre>
 -----------------------------------
 DataObjects
 
 User.py
   - Long, Lat
-  
+  - Instrument
+  - Genre
 
 ChatSession.py
+  - List<ChatEntity> 
+
+ChatEntity.py
+  - Message 
+  - 
 
 
 
