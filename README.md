@@ -9,22 +9,12 @@
 Screen One
 -----------
 Please let us have your location
-
-  POST get-location ->  server
-
 Screen Two
 -----------
 Instrument / Genere
-
-  POST profile ->  server
-
 Screen Three
 -----------
 Map
-  
-   GET long-lat <- server
-   GET ws upgrade -> server
-
 Screen Four
 -----------
 Chat
@@ -32,7 +22,6 @@ Chat
    Engaged via websocket 
 
 ------------------------------------------------
-
 <pre>
       +-------------------+
       |  JamrResource.py  |
@@ -95,7 +84,7 @@ Room.py
 ### JSON FORMATTING
 
 #### Pos
-{"lon":"1.1","lat":"1.2"}
+```json {"lon":"1.1","lat":"1.2"}```
 #### User
 {"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}
 #### Room
