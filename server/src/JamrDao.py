@@ -4,17 +4,23 @@ from DataSource import DataSource
 
 class JamrDao(object):
   def __init__(self):
-    this.ds = DataSource()
+    self.ds = DataSource()
 
-  def insertUser(user):
-    print 'insert user call'
+  def insertUser(self, user):
+    self.ds.put(user['uid'], user)
 
-  def getUser(uuid):
-    print 'get user call'
+  def getUser(self, uuid):
+    '''
+      Returns null on not found
+    '''
+    return self.ds.get(uuid)
 
-  def insertRoom(room):
-    print 'insert room call'
+  def insertRoom(self, room):
+    self.ds.put(room['uid'], room)
 
-  def getRoom(uuid):
-    print 'get room call'k
+  def getRoom(self, uuid):
+    '''
+      Returns null on not found
+    '''
+    return self.ds.get(uuid)
 
