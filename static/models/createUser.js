@@ -1,7 +1,7 @@
 var CreateUser = Backbone.Model.extend({
   defaults: {
     model: defaultUser,
-    type: 'create_user'
+    kind: 'create_user'
   }
 });
 

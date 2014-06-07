@@ -20,6 +20,21 @@ connection.onerror = function (error) {
 };
 
 // Log messages from the server
-connection.onmessage = function (e) {
-    console.log('Server: ' + e.data);
+connection.onmessage = function (message) {
+    console.log('Server: ' + message.data);
+    var model = $.parseJSON(message.data);
+    var type = model['kind'];
+    if (type === 'add_user') {
+
+    } else if (type === 'create_user') {
+
+    } else if (type === 'invite') {
+
+    } else if (type === 'leave') {
+
+    } else if (type === 'message') {
+
+    } else {
+        console.log('unknow request type');
+    }
 };

@@ -1,6 +1,6 @@
 var Leave = Backbone.Model.extend({
   defaults: {
-    type: 'leave',
+    kind: 'leave',
     model: defaultUser
   }
 });

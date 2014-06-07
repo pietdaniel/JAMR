@@ -1,6 +1,6 @@
 var Invite = Backbone.Model.extend({
   defaults: {
-    type: 'invite',
+    kind: 'invite',
     model: {
       sourceUser: defaultUser,
       destinationUser: defaultUser,

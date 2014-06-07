@@ -1,16 +1,21 @@
 var Message = Backbone.Model.extend({
   defaults: {
-    sourceUser: defaultUser,
-    room: defaultRoom,
-    message: ''
+    kind: 'message',
+    model: {
+      sourceUser: defaultUser,
+      room: defaultRoom,
+      message: ''
+    }
   }
 });
 
 function sendMessage(user, room, message) {
   var message = new Message({
-    sourceUser: user,
-    room: room,
-    message: message
+    model: {
+      sourceUser: user,
+      room: room,
+      message: message
+    }
   });
   sendMessage(message);
 }
