@@ -1,9 +1,11 @@
 var GeoView = Backbone.View.extend({
   tagName: "div",
-  template: "",
+
 
   render: function() {
-    this.$el.html(this.template());
+    var template = _.template( $("#hello").html(), {} );
+    // Load the compiled HTML into the Backbone "el"
+    this.$el.html( template );
     return this;
   }
 });
