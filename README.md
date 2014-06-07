@@ -88,23 +88,39 @@ Room.py
 {"lon":"1.1","lat":"1.2"}
 ```
 #### User
+```json
 {"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}
-#### Room
-{"users":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}],"uid":1}
-#### Add User Request
-{"kind":"ADD_USER","model":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}}
-#### Invite Request
-{"kind":"INVITE","model":{"src_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"},"dst_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}}}
-#### Create Request
-{"kind":"CREATE","model":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}}
-#### Leave Request
-{"kind":"LEAVE","model":{"src_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"},"room":{"users":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}],"uid":1}}}
-#### Message Request
-{"kind":"MESSAGE","model":{"src_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"},"room":{"users":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}],"uid":1}, "msg":"text"}}
-#### Users Request 
-{"kind":"USERS","model":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}]}
-
 ```
+#### Room
+```json
+{"users":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}],"uid":1}
+```
+#### Add User Request
+```json
+{"kind":"ADD_USER","model":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}}
+```
+#### Invite Request
+```json
+{"kind":"INVITE","model":{"src_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"},"dst_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}}}
+```
+#### Create Request
+```json
+{"kind":"CREATE","model":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}}
+```
+#### Leave Request
+```json
+{"kind":"LEAVE","model":{"src_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"},"room":{"users":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}],"uid":1}}}
+```
+#### Message Request
+```json
+{"kind":"MESSAGE","model":{"src_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"},"room":{"users":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}],"uid":1}, "msg":"text"}}
+```
+#### Users Request 
+```json
+{"kind":"USERS","model":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}]}
+```
+
+```python
 posBlob = '{"lon":"1.1","lat":"1.2"}'
 userBlob = '{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}'
 roomBlob = '{"users":['+userBlob+'],"uid":1}'
