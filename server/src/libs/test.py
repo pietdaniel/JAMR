@@ -1,7 +1,8 @@
 from User import User
-user = User(1,2,3,4)
+from Pos import Pos
+pos = Pos(1,2)
+user = User(pos,3,4)
 blob = user.toJson()
-
 print blob
 u2 = user.fromJson(blob)
 print u2.toString()
