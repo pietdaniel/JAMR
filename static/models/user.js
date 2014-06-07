@@ -1,3 +1,4 @@
+var defaultGeo = new Geo();
 var User = Backbone.Model.extend({
   defaults: {
     inst : "",
