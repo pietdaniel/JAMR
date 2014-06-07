@@ -46,7 +46,7 @@ Chat
 </pre>
 -----------------------------------
 ### Data Representations
-<code>
+<pre>
 Requests:
  ADD_USER
   source_user: <user>
@@ -76,7 +76,7 @@ User.py
 Room.py
   users: list<user>
   id: <long>
-</code>
+</pre>
 
 
 
