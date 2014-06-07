@@ -68,9 +68,12 @@ Chat
 </pre>
 #### Objects:
 <pre>
-User.py
+
+Pos.py
   lon: {double}
   lat: {double}
+User.py
+  pos: {pos}
   inst: {string}
   genr: {string}
 Room.py
