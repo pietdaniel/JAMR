@@ -8,4 +8,4 @@ class User(colander.MappingSchema):
   pos = Pos()
 
 class Users(colander.SequenceSchema):
-  user = user()
+  user = User()
