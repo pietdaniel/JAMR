@@ -8,6 +8,9 @@ class Serializable(object):
 
   def fromJson(self,blob):
     obj = json.loads(blob)
+    if '__type__' in obj and obj['__type__'] == self.__class__.__name__:
+        self.__dict__ = obj
+        return self
     return obj
 
  

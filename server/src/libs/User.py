@@ -16,12 +16,6 @@ class User(Serializable):
     self.genr = genr
     self.uid = "1"
 
-  def fromJson(self,blob):
-    obj = json.loads(blob)
-    if '__type__' in obj and obj['__type__'] == self.__class__.__name__:
-        return User(obj['lat'], obj['lon'],obj['inst'],obj['genr'])
-    return obj
-
   def toString(self):
     return str(self.lat) + " " + str(self.lon) + ' ' + str(self.inst) + ' ' + str(self.genr) + ' ' + str(self.uid)
 
