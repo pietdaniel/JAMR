@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script> 
+   function sendMessage() {
+        console.log(new Date().getTime());
+        connection.send("1");
+    }
+
+    function sleep(millis, callback) {
+        setTimeout(function(){ callback(); }, millis);
+    }
+
+    var websocket_url = "ws://localhost/chat";
+    var connection = new WebSocket(websocket_url);
+
+    connection.onopen = function () {
+      connection.send('Ping'); // Send the message 'Ping' to the server
+      setInterval(function(){sendMessage()}, 2000);
+    };
+
+    // Log errors
+    connection.onerror = function (error) {
+      console.log('WebSocket Error ' + error);
+    };
+
+    // Log messages from the server
+    connection.onmessage = function (e) {
+      console.log('Server: ' + e.data);
+    };
+</script>
+</body>
+</html>
