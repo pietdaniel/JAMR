@@ -95,7 +95,7 @@ Room.py
 ### JSON FORMATTING
 
 #### Pos
-{"lon":"1.1","lat":"1.2"}
+```json {"lon":"1.1","lat":"1.2"}```
 #### User
 {"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}
 #### Room
