@@ -1,5 +1,11 @@
-JAMR:
-
+<pre>
+     ██╗ █████╗ ███╗   ███╗██████╗ 
+     ██║██╔══██╗████╗ ████║██╔══██╗
+     ██║███████║██╔████╔██║██████╔╝
+██   ██║██╔══██║██║╚██╔╝██║██╔══██╗
+╚█████╔╝██║  ██║██║ ╚═╝ ██║██║  ██║
+ ╚════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝
+</pre>
 Screen One
 -----------
 Please let us have your location
@@ -86,8 +92,38 @@ Room.py
 2. Bass
 3. Drums
 
+### JSON FORMATTING
 
+#### Pos
+{"lon":"1.1","lat":"1.2"}
+#### User
+{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}
+#### Room
+{"users":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}],"uid":1}
+#### Add User Request
+{"kind":"ADD_USER","model":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}}
+#### Invite Request
+{"kind":"INVITE","model":{"src_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"},"dst_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}}}
+#### Create Request
+{"kind":"CREATE","model":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}}
+#### Leave Request
+{"kind":"LEAVE","model":{"src_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"},"room":{"users":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}],"uid":1}}}
+#### Message Request
+{"kind":"MESSAGE","model":{"src_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"},"room":{"users":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}],"uid":1}, "msg":"text"}}
+#### Users Request 
+{"kind":"USERS","model":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}]}
 
+```
+posBlob = '{"lon":"1.1","lat":"1.2"}'
+userBlob = '{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}'
+roomBlob = '{"users":['+userBlob+'],"uid":1}'
+addUserBlob = '{"kind":"ADD_USER","model":'+userBlob+'}'
+inviteBlob = '{"kind":"INVITE","model":{"src_user":'+userBlob+',"dst_user":'+userBlob+'}}'
+createBlob = '{"kind":"CREATE","model":'+userBlob+'}'
+leaveBlob = '{"kind":"LEAVE","model":{"src_user":'+userBlob+',"room":'+roomBlob+'}}'
+msgBlob = '{"kind":"MESSAGE","model":{"src_user":'+userBlob+',"room":'+roomBlob+', "msg":"text"}}'
+usersBlob = '{"kind":"USERS","model":['+userBlob+']}'
+```
 
 
 
