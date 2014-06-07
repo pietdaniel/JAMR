@@ -1,3 +1,4 @@
+import json
 class User():
   def __init__(self):
     self.__type__ = self.__class__.__name__
@@ -16,10 +17,10 @@ class User():
 
 
   def toJson(self):
-    return json.dumps(this, default=lambda o: o.__dict__)
+    return json.dumps(self, default=lambda o: o.__dict__)
 
-  def fromJson(self,json):
-    dict = json.loads(json)
+  def fromJson(self,blob):
+    obj = json.loads(blob)
     if '__type__' in obj and obj['__type__'] == self.__class__.__name__:
         return User(obj['lat'], obj['lon'],obj['inst'],obj['genr'])
     return obj
