@@ -87,23 +87,23 @@ Room.py
 
 ### JSON FORMATTING
 
-# Pos
+#### Pos
 {"lon":"1.1","lat":"1.2"}
-# User
+#### User
 {"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}
-# Room
+#### Room
 {"users":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}],"uid":1}
-# Add User Request
+#### Add User Request
 {"kind":"ADD_USER","model":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}}
-# Invite Request
+#### Invite Request
 {"kind":"INVITE","model":{"src_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"},"dst_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}}}
-# Create Request
+#### Create Request
 {"kind":"CREATE","model":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}}
-# Leave Request
+#### Leave Request
 {"kind":"LEAVE","model":{"src_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"},"room":{"users":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}],"uid":1}}}
-# Message Request
+#### Message Request
 {"kind":"MESSAGE","model":{"src_user":{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"},"room":{"users":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}],"uid":1}, "msg":"text"}}
-# Users Request
+#### Users Request 
 {"kind":"USERS","model":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}]}
 
 
