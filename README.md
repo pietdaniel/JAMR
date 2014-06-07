@@ -63,7 +63,6 @@ Chat
 </pre>
 #### Objects:
 <pre>
-
 Pos.py
   lon: {double}
   lat: {double}
@@ -71,9 +70,10 @@ User.py
   pos: {pos}
   inst: {string}
   genr: {string}
+  uid: {universally unique id}
 Room.py
   users: list{user}
-  id: {long}
+  uid: {universally unique id}
 </pre>
 
 #### Instruments:
@@ -82,7 +82,6 @@ Room.py
 3. Drums
 
 ### JSON FORMATTING
-
 #### Pos
 ```json
 {"lon":"1.1","lat":"1.2"}
@@ -119,7 +118,7 @@ Room.py
 ```json
 {"kind":"USERS","model":[{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}]}
 ```
-
+#### Generated from the following
 ```python
 posBlob = '{"lon":"1.1","lat":"1.2"}'
 userBlob = '{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}'
