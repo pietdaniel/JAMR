@@ -1,4 +1,9 @@
 var GeoView = Backbone.View.extend({
   tagName: "div",
-  template: ""
+  template: "",
+
+  render: function() {
+    this.$el.html(this.template());
+    return this;
+  }
 });
