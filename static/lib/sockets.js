@@ -24,17 +24,19 @@ connection.onmessage = function (message) {
     console.log('Server: ' + message.data);
     var model = $.parseJSON(message.data);
     var type = model['kind'];
-    if (type === 'add_user') {
+    if (type === 'ADD_USER') {
 
-    } else if (type === 'create_user') {
+    } else if (type === 'CREATE_USER') {
 
-    } else if (type === 'invite') {
+    } else if (type === 'INVITE') {
 
-    } else if (type === 'leave') {
+    } else if (type === 'LEAVE') {
 
-    } else if (type === 'message') {
+    } else if (type === 'MESSAGE') {
 
-    } else {
-        console.log('unknow request type');
+    } else if (type === 'USERS') {
+
+    }else {
+        console.log('unknown request type');
     }
 };

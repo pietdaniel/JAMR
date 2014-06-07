@@ -1,6 +1,6 @@
 var Message = Backbone.Model.extend({
   defaults: {
-    kind: 'message',
+    kind: 'MESSAGE',
     model: {
       sourceUser: defaultUser,
       room: defaultRoom,

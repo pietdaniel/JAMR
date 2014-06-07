@@ -1,9 +1,9 @@
 var User = Backbone.Model.extend({
   defaults: {
-    "instr" : "",
+    "inst" : "",
     "genr": "",
     "uid": "",
-    "posn": {
+    "pos": {
       "lat": 0,
       "lon": 0
     }
