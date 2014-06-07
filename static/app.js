@@ -1,6 +1,6 @@
 var Jamr = Backbone.Router.extend({
   routes: {
-    "": "geo"
+    "geo": "geo"
   },
 
   geo: function() {
@@ -9,5 +9,11 @@ var Jamr = Backbone.Router.extend({
     $('#app').html(geoView.render().el);
   }
 });
+console.log('apppp');
+var app_router = new Jamr();
 
-var app = new Jamr();
+
+
+Backbone.history.start({
+  root: ''
+});
