@@ -1,12 +1,11 @@
 var AddUser = Backbone.Model.extend({
   defaults: {
     model: defaultUser,
-    type: 'add_user'
+    kind: 'ADD_USER'
   }
 });
 
 function addUser(user) {
   var userToAdd = new AddUser({model: user});
-  console.log(userToAdd);
-  // send message
+  sendMessage(userToAdd);
 }

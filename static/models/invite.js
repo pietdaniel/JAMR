@@ -1,9 +1,9 @@
 var Invite = Backbone.Model.extend({
   defaults: {
-    type: 'invite',
+    kind: 'INVITE',
     model: {
-      sourceUser: defaultUser,
-      destinationUser: defaultUser,
+      src_user: defaultUser,
+      dst_user: defaultUser,
     }
   }
 });
@@ -11,9 +11,9 @@ var Invite = Backbone.Model.extend({
 function invite(sourceUser, destinationUser) {
   var invite = new Invite({
     model: {
-      sourceUser: sourceUser,
-      destinationUser: destinationUser
+      src_user: sourceUser,
+      dst_user: destinationUser
     }
   });
-  // send message to invite user
+  sendMessage(invite);
 }
