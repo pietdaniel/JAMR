@@ -41,12 +41,14 @@ Chat
                    |                                  
          +---------+-------+              
          |   DataStore.py  |              
-         +-----------------+              
+         +-----------------+
 
 -----------------------------------
 DataObjects
 
 User.py
+  - Long, Lat
+  
 
 ChatSession.py
 
