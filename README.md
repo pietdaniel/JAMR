@@ -78,6 +78,10 @@ Room.py
   id: {long}
 </pre>
 
+#### Instruments:
+1. Guitar
+2. Bass
+3. Drums
 
 
 
