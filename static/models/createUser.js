@@ -7,5 +7,5 @@ var CreateUser = Backbone.Model.extend({
 
 function createUser(user) {
   var userToCreate = new CreateUser({model: user});
-  // send message
+  sendMessage(userToCreate);
 }

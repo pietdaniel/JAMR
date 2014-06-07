@@ -7,5 +7,5 @@ var Leave = Backbone.Model.extend({
 
 function leave(user) {
   var leave = new Leave({model: user});
-  // send message to leave
+  sendMessage(leave);
 }

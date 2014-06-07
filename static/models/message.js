@@ -12,5 +12,5 @@ function sendMessage(user, room, message) {
     room: room,
     message: message
   });
-  // send message
+  sendMessage(message);
 }

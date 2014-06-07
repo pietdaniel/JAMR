@@ -15,5 +15,5 @@ function invite(sourceUser, destinationUser) {
       destinationUser: destinationUser
     }
   });
-  // send message to invite user
+  sendMessage(invite);
 }
