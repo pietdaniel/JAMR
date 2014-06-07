@@ -1,11 +1,12 @@
 var Leave = Backbone.Model.extend({
   defaults: {
-    type: 'leave',
-    model: defaultUser
+    kind: 'LEAVE',
+    model: defaultUser,
+    room: defaultRoom
   }
 });
 
-function leave(user) {
-  var leave = new Leave({model: user});
-  // send message to leave
+function leave(user, room) {
+  var leave = new Leave({model: user, room: room});
+  sendMessage(leave);
 }

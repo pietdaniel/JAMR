@@ -4,3 +4,5 @@ var Room = Backbone.Model.extend({
     id: 0
   }
 });
+
+var defaultRoom = new Room();

@@ -11,8 +11,8 @@
         setTimeout(function(){ callback(); }, millis);
     }
 
-    var websocket_url = "ws://localhost:9000/ws";
-    var connection = new WebSocket(websocket_url);
+    //var websocket_url = "ws://localhost:9000/ws";
+    //var connection = new WebSocket(websocket_url);
 
     connection.onopen = function () {
       connection.send('Ping'); // Send the message 'Ping' to the server
