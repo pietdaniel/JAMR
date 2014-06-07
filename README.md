@@ -45,20 +45,38 @@ Chat
          +-----------------+
 </pre>
 -----------------------------------
-DataObjects
+### Data Representations
 
+#### Requests:
+<pre>
+ ADD_USER
+  source_user: {user}
+ INVITE
+  source_user: {user}
+  dest_user: {user}
+ CREATE
+  source_user: {user}
+ LEAVE
+  source_user: {user}
+  room: {room}
+ MESSAGE
+  source_user: {user}
+  room: {room}
+  message: text
+ USERS
+  users: List{user}
+</pre>
+#### Objects:
+<pre>
 User.py
-  - Long, Lat
-  - Instrument
-  - Genre
-
-ChatSession.py
-  - List<ChatEntity> 
-
-ChatEntity.py
-  - Message 
-  - 
-
+  lon: {double}
+  lat: {double}
+  inst: {string}
+  genr: {string}
+Room.py
+  users: list{user}
+  id: {long}
+</pre>
 
 
 
