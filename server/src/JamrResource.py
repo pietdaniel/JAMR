@@ -15,16 +15,13 @@ class Root(object):
   def ws(self):
     handler = cherrypy.request.ws_handler
 
-
 class Server(WebSocket):
   def opened(self):
     print "Succesfully opened connection"
 
-
   def received_message(self, message):
     print 'Server echoing: ' + message.data
     self.send(message.data, message.is_binary)
-
 
 if __name__ == '__main__':
   cherrypy.quickstart(Root(), '/', config={'/ws': {'tools.websocket.on': True, 'tools.websocket.handler_cls': Server}})

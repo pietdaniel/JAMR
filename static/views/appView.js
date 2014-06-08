@@ -1,8 +1,9 @@
 
 define([
   "views/geoView",
-  "views/instrumentView"
-], function(GeoView, InstrumentView){
+  "views/instrumentView",
+  "views/genreView"
+], function(GeoView, InstrumentView, GenreView){
   return Backbone.View.extend({
     tagName: "div",
 
