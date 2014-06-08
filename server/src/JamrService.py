@@ -33,6 +33,7 @@ class JamrService(object):
     uuid = user['model']["uid"]
     self.putWSKey(uuid, peer_address)
     self.dao.insertUser(user)
+    self.doUsers()
 
   def doCreate(self, room, peer_address):
     self.dao.insertRoom(room)
@@ -61,6 +62,10 @@ class JamrService(object):
     self.dao.insertRoom(roomData)
     for user in roomUsers:
       self.dao.getWebsocket(wskey).send(leave, False)
+
+
+  def doUsers():
+    print 'implement me'
 
   def getObj(self, funcType, jsonDict):
     return funcType().deserialize(json.loads(jsonBlob))
