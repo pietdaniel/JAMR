@@ -12,7 +12,8 @@ define([
     },
 
     events: {
-      "submit form": "submitChat" 
+      "submit form": "submitChat",
+      "keyup form" : "keyPressed"
     },
 
     render: function() {
@@ -26,6 +27,13 @@ define([
       var input = $(e.currentTarget.children[0]);
       console.log(input.val());
       input.val("");
+    },
+
+    keyPressed: function(e) {
+      //listen for ESC key
+      if (e.keyCode == 27) {
+        this.trigger("closeChat");
+      }
     }
   });
 });
