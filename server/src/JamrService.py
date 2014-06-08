@@ -7,36 +7,41 @@ class JamrService(object):
     self.dao = JamrDao()
 
   def dispatch(self, message, peer_address):
-    print 'dispatch ' + str(message) + ' ' + str(peer_address)
+    #print 'dispatch ' + str(message) + ' ' + str(peer_address)
+    
     jd = json.loads(message)
+
     if jd['kind'] == "ADD_USER":
-      desr = getObj(RequestTypes.AddUser, jd)
-      return doAddUser(desr, peer_address)
+      desr = self.getObj(models.RequestTypes.AddUser, jd)
+      return self.addUser(desr, peer_address)
+
     elif jd['kind'] == "INVITE":
-      desr = getObj(RequestTypes.Invite, jd)
-      return doInvite(desr, peer_address)
+      desr = self.getObj(models.RequestTypes.Invite, jd)
+      return self.doInvite(desr, peer_address)
+
     elif jd['kind'] == "CREATE":
-      desr = getObj(RequestTypes.Create, jd)
-      return doCreate(desr, peer_address)
+      desr = self.getObj(models.RequestTypes.Create, jd)
+      return self.createRoom(desr, peer_address)
+
     elif jd['kind'] == "LEAVE":
-      desr = getObj(RequestTypes.Leave, jd)
-      return doLeave(desr, peer_address)
+      desr = self.getObj(models.RequestTypes.Leave, jd)
+      return self.doLeave(desr, peer_address)
+
     elif jd['kind'] == "MESSAGE":
-      desr = getObj(RequestTypes.Message, jd)
-      return doMessage(desr, peer_address)
-    else
+      desr = self.getObj(models.RequestTypes.Message, jd)
+      return self.doMessage(desr, peer_address)
+
+    else:
       print 'ERROR no message type for message: ' + str(message)
     
-    # self.getWS(peer_address).send(str(peer_address), False)
-
-  def doAddUser(self, user, peer_address):
+  def addUser(self, user, peer_address):
     uuid = user['model']["uid"]
     self.putWSKey(uuid, peer_address)
-    self.dao.insertUser(user)
-    self.doUsers()
+    self.dao.insertUser(user['model'])
+    self.getAllUsers()
 
-  def doCreate(self, room, peer_address):
-    self.dao.insertRoom(room)
+  def createRoom(self, room, peer_address):
+    self.dao.insertRoom(room['model'])
 
   def doMessage(self, msgObj, peer_address):
     roomObj = msgObj['model']['room']
@@ -50,7 +55,7 @@ class JamrService(object):
     dstUser = invite['model']['dst_user']
     dstUserId = dstUser['uid']
     wskey = self.dao.getWSKey(dstUserId)
-    self.dao.getWebsocket(wskey).send(invite, False)
+    self.dao.getWebsocket(wskey).send(self.toJSON(invite), False)
 
   def doLeave(self, leave, peer_address):
     roomObj = leave['model']['room']
@@ -61,14 +66,26 @@ class JamrService(object):
     roomData['users'] = roomUsers
     self.dao.insertRoom(roomData)
     for user in roomUsers:
-      self.dao.getWebsocket(wskey).send(leave, False)
+      self.dao.getWebsocket(wskey).send(self.toJSON(leave), False)
 
 
-  def doUsers():
-    print 'implement me'
+  def getUser(self,uid):
+    return self.dao.getUser(uid)
 
-  def getObj(self, funcType, jsonDict):
-    return funcType().deserialize(json.loads(jsonBlob))
+  def getRoom(self,uid):
+    return self.dao.getRoom(uid)
+
+  def getAllUsers(self):
+    users = self.toJSON(self.dao.getAllUsers())
+    for ws in self.dao.getAllWebSockets():
+      ws.send(users, False)
+    return users 
+
+  def getObj(self, funcType, jsonBlob):
+    return funcType().deserialize(jsonBlob)
+
+  def toJSON(self, obj):
+    return json.dumps(obj)
 
   def putWS(self, peer_address, ws):
     self.dao.insertWebsocket(peer_address, ws)
@@ -81,5 +98,6 @@ class JamrService(object):
 
   def getWSKey(self, uuid):
     return self.dao.getKey(uuid)
+
 
 
