@@ -38,9 +38,11 @@ define([
     map: function(instrument, genre) {
       console.log(instrument + genre);
       var mapView = new MapView();
+      mapView.setGeo(this.geo);
       console.log(this.geo);
+      mapView.render()
+      this.$el.html(mapView.$el);
       mapView.createUser(this.geo, instrument, genre);
-      this.$el.html(mapView.$el);      
     },
 
     instr: function(){

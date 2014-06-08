@@ -3,11 +3,10 @@
       
 </p>
 <div id='map'></div>
-{{geo}}
 <script>
-
  window.map = L.map('map').setView([{{{geo.coords.latitude}}}, {{{geo.coords.longitude}}}], 13);
-
+      console.log('users');
+      console.log(users);
       var Stamen_Watercolor = L.tileLayer('http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg', {
         //attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
       subdomains: 'abcd',
@@ -31,4 +30,11 @@
       Stamen_Watercolor.addTo(map);
       Stamen_TonerLabels.addTo(map);
       marker.addTo(map);
+      var usersJson = JSON.parse(users);
+      for(var i = 0; i < usersJson.length; i++) {
+            var marker = L.marker([parseInt(usersJson[i].pos.lon), parseInt(usersJson[i].pos.lat)], {icon: meIcon});
+            marker.addTo(map);
+            console.log(usersJson[i]);
+      }
 </script>
+

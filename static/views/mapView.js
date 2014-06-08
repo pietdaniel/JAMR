@@ -28,9 +28,26 @@ define([
       console.log(position);
     },
 
+    setGeo: function(geo) {
+      this.geo = geo;
+    },
     createUser: function(geo, instrument, genre) {
       var jsonUsers = JSON.parse(users);
-      this.usersCollection = new UsersCollection(jsonUsers);
+      var meIcon = L.icon({
+            iconUrl: 'assets/img/icon512/me.png',
+
+            iconSize:     [38, 95], // size of the icon
+            iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+      });
+      for(var i = 0; i < jsonUsers.length; i++){
+        var marker = L.marker([jsonUsers[i].pos.lon, jsonUsers[i].pos.lat]);
+        marker.addTo(window.map);
+        console.log(jsonUsers[i]);
+        this.usersCollection.push({
+          inst: jsonUsers[i].inst
+        });
+      }
       this.geo = geo;
       console.log(instrument + genre);
       console.log(geo);
@@ -52,6 +69,7 @@ define([
 
     render: function() {
       this.$el.html( this.template({geo: this.geo, users: this.usersCollection}) );
+
       this.delegateEvents();
       return this;
     },
