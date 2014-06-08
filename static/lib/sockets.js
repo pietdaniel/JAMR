@@ -7,11 +7,15 @@ function sleep(millis, callback) {
     setTimeout(function(){ callback(); }, millis);
 }
 
-var websocket_url = "ws://localhost:9000/ws";
+var websocket_url = "ws://127.0.0.1:9000/ws";
 var connection = new WebSocket(websocket_url);
 
 connection.onopen = function () {
-    connection.send('Ping'); // Send the message 'Ping' to the server
+    if(connection.readyState === 1) {
+        connection.send('Ping'); // Send the message 'Ping' to the server
+        console.log('pinging');
+    }
+    
 };
 
 // Log errors
@@ -25,7 +29,8 @@ connection.onmessage = function (message) {
     var model = $.parseJSON(message.data);
     var type = model['kind'];
     if (type === 'ADD_USER') {
-
+        //var userJson = $.parseJSON(message.data);
+        //console.log(userJson);
     } else if (type === 'CREATE_USER') {
 
     } else if (type === 'INVITE') {
