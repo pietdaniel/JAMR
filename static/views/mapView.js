@@ -88,8 +88,8 @@ define([
         return (user.marker._icon == e.currentTarget);
       });
       console.log(clickedUser);
+      
       //create a room
-
       //invite the user
       this.openChat();
 
