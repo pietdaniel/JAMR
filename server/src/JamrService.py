@@ -118,9 +118,9 @@ class JamrService(object):
     }
 
   def createFakeBand(self):
-    self.addUser(self.getUser("1", "guitar", "42.370641", "-71.080689"), ('127.0.0.1', 1234))
-    self.addUser(self.getUser("2", "guitar_base", "42.363158", "-71.079402"), ('127.0.0.1', 1235))
-    self.addUser(self.getUser("3", "sax", "42.371656", "-71.080432"), ('127.0.0.1', 1236))
-    self.addUser(self.getUser("4", "keyboard", "42.365822", "-71.093049"), ('127.0.0.1', 1237))
+    self.addUser(self.getFakeUser("1", "guitar", "42.370641", "-71.080689"), ('127.0.0.1', 1234))
+    self.addUser(self.getFakeUser("2", "guitar_base", "42.363158", "-71.079402"), ('127.0.0.1', 1235))
+    self.addUser(self.getFakeUser("3", "sax", "42.371656", "-71.080432"), ('127.0.0.1', 1236))
+    self.addUser(self.getFakeUser("4", "keyboard", "42.365822", "-71.093049"), ('127.0.0.1', 1237))
   
 
