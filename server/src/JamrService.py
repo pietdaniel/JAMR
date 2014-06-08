@@ -51,12 +51,14 @@ class JamrService(object):
     self.dao.insertRoom(room['model'])
 
   def doMessage(self, msgObj, peer_address):
-    roomObj = msgObj['model']['room']
-    roomId = roomObj['uid']
-    roomData = self.dao.getRoom(roomId)
-    roomUsers = roomData["users"]
-    for user in roomUsers:
-      self.dao.getWebsocket(wskey).send(msgObj, False)
+    for ws in self.dao.getAllWebSockets():
+      ws.send(msgObj['model']['msg'], False)
+    #roomObj = msgObj['model']['room']
+    #roomId = roomObj['uid']
+    #roomData = self.dao.getRoom(roomId)
+    #roomUsers = roomData["users"]
+    #for user in roomUsers:
+    #  self.dao.getWebsocket(wskey).send(msgObj, False)
 
   def doInvite(self, invite, peer_address):
     dstUser = invite['model']['dst_user']
