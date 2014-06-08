@@ -1,7 +1,7 @@
 //filename: geoView.js
 
 define([
-  "text!templates/geo.html"
+  "text!templates/geo.html",
 ], function(template){
   return Backbone.View.extend({
     tagName: "div",
@@ -24,7 +24,7 @@ define([
 
     getStarted: function() {
       this.remove();
-      
+      app.instr();
     }
   });
 });
