@@ -16,7 +16,7 @@ class Invite(colander.MappingSchema):
 
 class Create(colander.MappingSchema):
   kind = colander.SchemaNode(colander.String(), validator=colander.OneOf(['CREATE']))
-  model = User()
+  model = Room()
 
 class LeaveModel(colander.MappingSchema):
   src_user = User()

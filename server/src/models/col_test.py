@@ -7,9 +7,10 @@ import RequestTypes
 posBlob = '{"lon":"1.1","lat":"1.2"}'
 userBlob = '{"pos":{"lon":"1.0","lat":"1.1"}, "inst":"guitar", "genr":"rock", "uid":"1"}'
 roomBlob = '{"users":['+userBlob+'],"uid":1}'
+
 addUserBlob = '{"kind":"ADD_USER","model":'+userBlob+'}'
 inviteBlob = '{"kind":"INVITE","model":{"src_user":'+userBlob+',"dst_user":'+userBlob+'}}'
-createBlob = '{"kind":"CREATE","model":'+userBlob+'}'
+createBlob = '{"kind":"CREATE","model":'+roomBlob+'}'
 leaveBlob = '{"kind":"LEAVE","model":{"src_user":'+userBlob+',"room":'+roomBlob+'}}'
 msgBlob = '{"kind":"MESSAGE","model":{"src_user":'+userBlob+',"room":'+roomBlob+', "msg":"text"}}'
 usersBlob = '{"kind":"USERS","model":['+userBlob+']}'
