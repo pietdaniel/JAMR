@@ -23,8 +23,8 @@ define([
     selectInstr: function(e) {
       e.preventDefault();
       console.log(e.currentTarget.getAttribute('data'));
-      //this.remove();
-      //change views
+      this.remove();
+      app.genre();
     }
   });
 });

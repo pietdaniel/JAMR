@@ -1,0 +1,20 @@
+<h1 class="cover-heading">JAMR</h1>
+<div id='map'></div>
+<script>
+ var map = L.map('map').setView([51.505, -0.09], 13);
+      var Stamen_Watercolor = L.tileLayer('http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg', {
+        //attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+      subdomains: 'abcd',
+      minZoom: 3,
+      maxZoom: 16
+      });
+      var Stamen_TonerLabels = L.tileLayer('http://{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.png', {
+      //attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+      subdomains: 'abcd',
+      minZoom: 0,
+      maxZoom: 20
+      });
+
+      Stamen_Watercolor.addTo(map);
+      Stamen_TonerLabels.addTo(map);
+</script>

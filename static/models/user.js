@@ -1,10 +1,12 @@
-var defaultGeo = new Geo();
 var User = Backbone.Model.extend({
   defaults: {
     inst : "",
     genr: "",
     uid: "",
-    pos: defaultGeo
+    pos: {
+      lat: 0,
+      lon: 0
+    }
   }
 });
 
