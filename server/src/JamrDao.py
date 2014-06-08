@@ -4,6 +4,7 @@ from DataSource import DataSource
 
 class JamrDao(object):
   def __init__(self):
+    print "dao init"
     self.userDS = DataSource("database.pickle.user")
     self.roomDS = DataSource("database.pickle.room")
     self.uidToWsKeyDic = {}

@@ -1,13 +1,15 @@
 from JamrDao import JamrDao
 import models.RequestTypes
 import json
+import cherrypy
 
 class JamrService(object):
   def __init__(self):
+    print "service init"
     self.dao = JamrDao()
     self.count = 0
 
-  def dispatch(self, message, peer_address):
+  def dispatch(self, message, peer_address, ws):
     #print 'dispatch ' + str(message) + ' ' + str(peer_address)
     
     if(str(message) == "Ping" or str(message) == "1"):
@@ -37,7 +39,7 @@ class JamrService(object):
 
     elif jd['kind'] == "MESSAGE":
       desr = self.getObj(models.RequestTypes.Message, jd)
-      return self.doMessage(desr, peer_address)
+      return self.doMessage(desr, peer_address, ws)
 
     else:
       print 'ERROR no message type for message: ' + str(message)
@@ -50,11 +52,9 @@ class JamrService(object):
   def createRoom(self, room, peer_address):
     self.dao.insertRoom(room['model'])
 
-  def doMessage(self, msgObj, peer_address):
-    print self.dao.getAllWebSockets()
-    for ws in self.dao.getAllWebSockets():
-      print ws
-      ws.send(msgObj['model']['msg'], False)
+  def doMessage(self, msgObj, peer_address, ws):
+    cherrypy.engine.publish('websocket-broadcast', json.dumps({"kind":"MESSAGE" , "mes" : msgObj['model']['msg']}))
+    #ws.send(msgObj['model']['msg'], False)
     #roomObj = msgObj['model']['room']
     #roomId = roomObj['uid']
     #roomData = self.dao.getRoom(roomId)

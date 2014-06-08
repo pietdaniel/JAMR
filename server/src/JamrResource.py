@@ -27,7 +27,7 @@ class Server(WebSocket):
 
     def received_message(self, message):
       print "Peer " + str(self.peer_address) + " send message: " + str(message)
-      self.service.dispatch(message.data, self.peer_address)
+      self.service.dispatch(message.data, self.peer_address, self)
   
 class JamrResource(object):
   def __init__(self):
