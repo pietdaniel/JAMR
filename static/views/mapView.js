@@ -32,6 +32,10 @@ define([
 
     render: function() {
       this.$el.html( this.template({geo: this.geo}) );
+      //this.$el
+      var marker = L.marker([this.geo.coords.latitude, this.geo.coords.longitude]);
+      //marker.addTo(window.map);
+
       
       this.delegateEvents();
       return this;
