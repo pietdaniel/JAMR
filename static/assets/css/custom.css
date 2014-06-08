@@ -1,0 +1,32 @@
+.circle-icon .large{
+  width: 70px;
+  height: 70px;
+  border: none;
+  display: inline-block;
+  border-radius: 500px;
+  background-color: darkorange;
+  margin: 5px 5px 0px 0px;
+  text-align: center;
+  float: right;
+}
+
+.red {
+  background-color: pink;
+}
+
+.blue {
+  background-color: darkblue;
+}
+
+.img-circle {
+  margin: 40px;
+}
+
+.instr-row {
+
+}
+
+.medium {
+  max-width: 100px;
+  max-height: 100px;
+}
