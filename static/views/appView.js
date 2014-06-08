@@ -40,7 +40,6 @@ define([
       var mapView = new MapView();
       console.log(this.geo);
       mapView.createUser(this.geo, instrument, genre);
-      mapView.render();
       this.$el.html(mapView.$el);      
     },
 

@@ -23,14 +23,20 @@ connection.onerror = function (error) {
     console.log('WebSocket Error ' + error);
 };
 
+var users = [];
+
 // Log messages from the server
 connection.onmessage = function (message) {
     console.log('Server: ' + message.data);
     var model = $.parseJSON(message.data);
     var type = model['kind'];
+    if (users.length == 0) {
+        users = message.data;
+        console.log(users);
+    }
     if (type === 'ADD_USER') {
-        //var userJson = $.parseJSON(message.data);
-        //console.log(userJson);
+        var userJson = $.parseJSON(message.data);
+        console.log(userJson);
     } else if (type === 'CREATE_USER') {
 
     } else if (type === 'INVITE') {
@@ -40,7 +46,7 @@ connection.onmessage = function (message) {
     } else if (type === 'MESSAGE') {
 
     } else if (type === 'USERS') {
-
+        console.log('weve got users');
     }else {
         console.log('unknown request type');
     }

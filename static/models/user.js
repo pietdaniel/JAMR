@@ -12,6 +12,5 @@ define([], function() {
   });
 
   var defaultUser = new User();
-  console.log('usersssss');
   return User;
 });
