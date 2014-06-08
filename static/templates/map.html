@@ -24,18 +24,25 @@
             iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
       });
+      /*
       var markers = []
       var marker = L.marker([{{geo.coords.latitude}}, {{geo.coords.longitude}}], {icon: meIcon});
       app.me.set('marker', marker);
       window.markers.push(marker);
+      */
       Stamen_Watercolor.addTo(map);
       Stamen_TonerLabels.addTo(map);
-      marker.addTo(map);
+      //marker.addTo(map);
+      users = [
+            {"genr": "rock", "inst": "guitar", "pos": {"lat": "-71.080689", "lon": "42.370641"}, "uid": "1"},
+            {"genr": "rock", "inst": "sax", "pos": {"lat": "-71.080432", "lon": "42.371656"}, "uid": "3"},
+            {"genr": "rock", "inst": "guitar_base", "pos": {"lat": "-71.079402", "lon": "42.363158"}, "uid": "2"},
+            {"genr": "rock", "inst": "keyboard", "pos": {"lat": "-71.093049", "lon": "42.365822"}, "uid": "4"}
+      ];
       for(var i = 0; i < users.length; i++) {
-            console.log(users[i].pos.lon);
-            var marker = L.marker([parseInt(users[i].pos.lon), parseInt(users[i].pos.lat)], {icon: meIcon});
+            console.log(users[i]);
+            var marker = L.marker([parseFloat(users[i].pos.lon), parseFloat(users[i].pos.lat)], {icon: meIcon});
             users[i].marker = marker;
-            markers.push(marker);
             marker.addTo(map);
             console.log(users[i]);
       }

@@ -12,11 +12,12 @@ define([
 
     initialize: function () {
       this.subView = new GeoView();
-      this.geo = "";
+      this.geo = {"timestamp":1402242531034,"coords":{"speed":null,"heading":null,"altitudeAccuracy":null,"accuracy":20,"altitude":null,"longitude":-71.07890189999999,"latitude":42.3640325}};
       this.me = new User();
       this.users = new Users();
       var self = this;
 
+      /*
       if (navigator.geolocation) {
         var pos = navigator.geolocation.getCurrentPosition(function(position) {
           self.geo = position;
@@ -25,6 +26,7 @@ define([
       } else {
         console.log('cannot get location');
       }
+      */
       this.render();
     },
 

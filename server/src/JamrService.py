@@ -51,7 +51,9 @@ class JamrService(object):
     self.dao.insertRoom(room['model'])
 
   def doMessage(self, msgObj, peer_address):
+    print self.dao.getAllWebSockets()
     for ws in self.dao.getAllWebSockets():
+      print ws
       ws.send(msgObj['model']['msg'], False)
     #roomObj = msgObj['model']['room']
     #roomId = roomObj['uid']

@@ -34,6 +34,7 @@ define([
     },
     createUser: function(geo, instrument, genre) {
       //var jsonUsers = JSON.parse(users);
+      /*
       var meIcon = L.icon({
             iconUrl: 'assets/img/icon512/me.png',
 
@@ -41,6 +42,7 @@ define([
             iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
       });
+      */
       /*
       for(var i = 0; i < users.length; i++){
         var marker = L.marker([users[i].pos.lon, users[i].pos.lat]);
@@ -58,8 +60,8 @@ define([
         inst: instrument,
         genr: genre,
         pos: {
-          lat: geo.coords.latitude.toString(),
-          lon: geo.coords.longitude.toString()
+          lat: "-71.080689",
+          lon: "42.370641"
         },
         uid: new Date().getTime().toString()
       });
