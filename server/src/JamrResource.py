@@ -38,10 +38,8 @@ class Server(WebSocket):
       return self.service.getAllUsers()
 
     def received_message(self, message):
-      print type(message)
       print "Peer " + str(self.peer_address) + " send message: " + str(message)
-      if( str(message) != "Ping"):
-        self.service.dispatch(message.data, self.peer_address)
+      self.service.dispatch(message.data, self.peer_address)
 
     def createFakeBand(self):
       self.service.addUser(getUser(1, "guitar", "42.370641", "-71.080689"), ('127.0.0.1', 1234))
