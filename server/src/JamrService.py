@@ -106,7 +106,7 @@ class JamrService(object):
   def getWSKey(self, uuid):
     return self.dao.getKey(uuid)
 
-  def getUser(self,uid, inst, lon, lat):
+  def getFakeUser(self,uid, inst, lon, lat):
     return { "kind":"ADD_USER",
       "model": 
       {
