@@ -1,3 +1,5 @@
+/* ICON STYLE */
+
 .circle-icon .large{
   width: 70px;
   height: 70px;
@@ -24,6 +26,22 @@
 
 .instr-row {
 
+}
+
+/* CHAT STYLE */
+
+.chat-box > tbody > tr:nth-child(odd) > td,
+.chat-box > tbody > tr:nth-child(odd) > th {
+  background-color: #0A3F38;
+}
+
+.chat-input {
+  width: 100%;
+  color: black;
+}
+
+.msg-text {
+  float: left;
 }
 
 .medium {

@@ -1,14 +1,16 @@
 define([
   "views/geoView",
+  "views/instrumentView",
   "views/genreView",
-  "views/mapView",
-  "views/instrumentView"
-], function(GeoView, GenreView, MapView, InstrumentView){
+  "views/chatView",
+  "views/MapView",
+], function(GeoView, InstrumentView, GenreView, ChatView, MapView){
   return Backbone.View.extend({
     tagName: "div",
 
     initialize: function () {
       console.log("appView initialized");
+      this.subView = new ChatView();
       this.geo = "";
       var self = this;
 
@@ -32,6 +34,7 @@ define([
     render: function() {
       this.$el.html(this.subView.$el);
     },
+
     map: function(instrument, genre) {
       console.log(instrument + genre);
       var mapView = new MapView();
@@ -40,10 +43,12 @@ define([
       mapView.render();
       this.$el.html(mapView.$el);      
     },
+
     instr: function(){
       this.subView = new InstrumentView();
       this.render();
     },
+
     genre: function(instrument) {
       this.subView = new GenreView();
       this.subView.setInstrument(instrument);
