@@ -13,14 +13,18 @@ define([
 
     events: {
       "click .img-circle" : "selectInstr",
-    }
+    },
 
     render: function() {
       this.$el.html(this.template);
-    }
+      this.delegateEvents();
+    },
 
     selectInstr: function(e) {
-      debugger
+      e.preventDefault();
+      console.log(e.currentTarget.getAttribute('data'));
+      //this.remove();
+      //change views
     }
   });
 });
