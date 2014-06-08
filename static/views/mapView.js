@@ -4,8 +4,9 @@ define([
   "lib/sockets.js",
   "models/user.js",
   "models/createUser.js",
-  "collections/users.js"
-], function(template, leaflet, Sockets, User, CreateUser, UsersCollection){
+  "collections/users.js",
+  "views/chatView",
+], function(template, leaflet, Sockets, User, CreateUser, UsersCollection, ChatView){
   return Backbone.View.extend({
     tagName: "div",
     template: Handlebars.compile(template),
@@ -72,6 +73,11 @@ define([
     render: function() {
       this.$el.html( this.template({geo: this.geo, users: this.usersCollection}) );
 
+      //create new chat for now
+      this.chat = new ChatView();
+      this.listenTo(this.chat, "closeChat", this.closeChat);
+      this.$el.find("#chat").html(this.chat.$el);
+
       this.delegateEvents();
       return this;
     },
@@ -85,7 +91,18 @@ define([
       //create a room
 
       //invite the user
+      this.openChat();
 
+    },
+
+    openChat: function(){
+      $("#map").animate({width: '60%'}, 200);
+      $("#chat").animate({width: '40%'}, 200);
+    },
+
+    closeChat: function(){
+      $("#map").animate({width: '100%'}, 200);
+      $("#chat").animate({width: '0%'}, 200);
     }
   });
 });
