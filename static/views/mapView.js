@@ -41,7 +41,7 @@ define([
           lat: geo.coords.latitude.toString(),
           lon: geo.coords.longitude.toString()
         },
-        uid: new Date().getTime()
+        uid: new Date().getTime().toString()
       });
       var createUser = new CreateUser({
         model: user
