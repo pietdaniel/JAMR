@@ -13,9 +13,16 @@ define([
       "click #next": "next",
     },
 
+    setInstrument: function(instrument) {
+      this.instrument = instrument;
+    },
+
     next: function() {
       var genre = $('.ui-selected').attr('id');
-      this.remove();
+      if(genre && genre.length > 0) {
+        this.remove();
+        app.map(this.instrument, genre);
+      }
     },
 
     render: function() {

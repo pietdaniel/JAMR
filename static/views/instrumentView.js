@@ -24,7 +24,7 @@ define([
       e.preventDefault();
       console.log(e.currentTarget.getAttribute('data'));
       this.remove();
-      app.genre();
+      app.genre(e.currentTarget.getAttribute('data'));
     }
   });
 });
