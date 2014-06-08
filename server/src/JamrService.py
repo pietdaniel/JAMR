@@ -34,8 +34,6 @@ class JamrService(object):
     else:
       print 'ERROR no message type for message: ' + str(message)
     
-    # self.getWS(peer_address).send(str(peer_address), False)
-
   def addUser(self, user, peer_address):
     uuid = user['model']["uid"]
     self.putWSKey(uuid, peer_address)
@@ -57,7 +55,7 @@ class JamrService(object):
     dstUser = invite['model']['dst_user']
     dstUserId = dstUser['uid']
     wskey = self.dao.getWSKey(dstUserId)
-    self.dao.getWebsocket(wskey).send(invite, False)
+    self.dao.getWebsocket(wskey).send(self.toJSON(invite), False)
 
   def doLeave(self, leave, peer_address):
     roomObj = leave['model']['room']
@@ -68,7 +66,7 @@ class JamrService(object):
     roomData['users'] = roomUsers
     self.dao.insertRoom(roomData)
     for user in roomUsers:
-      self.dao.getWebsocket(wskey).send(leave, False)
+      self.dao.getWebsocket(wskey).send(self.toJSON(leave), False)
 
 
   def getUser(self,uid):
@@ -78,10 +76,16 @@ class JamrService(object):
     return self.dao.getRoom(uid)
 
   def getAllUsers(self):
-    return self.dao.getAllUsers()
+    users = self.toJSON(self.dao.getAllUsers())
+    for ws in self.dao.getAllWebSockets():
+      ws.send(users, False)
+    return users 
 
   def getObj(self, funcType, jsonBlob):
     return funcType().deserialize(jsonBlob)
+
+  def toJSON(self, obj):
+    return json.dumps(obj)
 
   def putWS(self, peer_address, ws):
     self.dao.insertWebsocket(peer_address, ws)
@@ -94,5 +98,6 @@ class JamrService(object):
 
   def getWSKey(self, uuid):
     return self.dao.getKey(uuid)
+
 
 

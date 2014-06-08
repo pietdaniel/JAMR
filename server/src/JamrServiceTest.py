@@ -70,7 +70,7 @@ class JamrServiceTest(unittest.TestCase):
   def testGetAllUsers(self):
     self.jamrService.dispatch(ADD_USER_MESS, PEER_ADDR)
     self.jamrService.dispatch(ADD_USER_MESS_2, PEER_ADDR)
-    self.assertEqual(len(self.jamrService.getAllUsers()), 2)    
+    self.assertEqual(len(json.loads(self.jamrService.getAllUsers())), 2)    
 
 if __name__ == "__main__":
     unittest.main()

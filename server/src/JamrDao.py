@@ -42,3 +42,6 @@ class JamrDao(object):
 
   def getAllUsers(self):
     return self.userDS.getAll()
+
+  def getAllWebSockets(self):
+    return self.uidToWs.values()  
