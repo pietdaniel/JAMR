@@ -1,5 +1,5 @@
 define([
-  "text!templates/instrument.html"
+  "text!templates/chat.html"
 ], function(template){
   return Backbone.View.extend({
     tagName: "div",
@@ -7,12 +7,12 @@ define([
     template: template,
 
     initialize: function () {
-      console.log("instrumentView initialized")
+      console.log("chatView initialized")
       this.render();
     },
 
     events: {
-      "click .img-circle" : "selectInstr",
+      "submit form": "submitChat" 
     },
 
     render: function() {
@@ -20,11 +20,12 @@ define([
       this.delegateEvents();
     },
 
-    selectInstr: function(e) {
+    submitChat: function(e) {
+      //log input then clear it
       e.preventDefault();
-      console.log(e.currentTarget.getAttribute('data'));
-      this.remove();
-      app.genre();
+      var input = $(e.currentTarget.children[0]);
+      console.log(input.val());
+      input.val("");
     }
   });
 });

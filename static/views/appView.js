@@ -2,14 +2,15 @@
 define([
   "views/geoView",
   "views/instrumentView",
-  "views/genreView"
-], function(GeoView, InstrumentView, GenreView){
+  "views/genreView",
+  "views/chatView"
+], function(GeoView, InstrumentView, GenreView, ChatView){
   return Backbone.View.extend({
     tagName: "div",
 
     initialize: function () {
       console.log("appView initialized");
-      this.subView = new InstrumentView();
+      this.subView = new ChatView();
       this.render();
     },
 
@@ -27,6 +28,10 @@ define([
       this.render();
     },
 
+    genre: function(){
+      this.subView = new GenreView();
+      this.render();
+    }
 
   });
 });
