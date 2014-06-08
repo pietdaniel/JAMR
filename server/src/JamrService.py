@@ -5,13 +5,17 @@ import json
 class JamrService(object):
   def __init__(self):
     self.dao = JamrDao()
+    self.count = 0
 
   def dispatch(self, message, peer_address):
     #print 'dispatch ' + str(message) + ' ' + str(peer_address)
     
     if(str(message) == "Ping" or str(message) == "1"):
-      return
-
+      if(self.count == 0):
+        self.count = self.count + 1
+        self.createFakeBand()
+        return self.getAllUsers()
+      return  
     jd = json.loads(message)
   
     if jd['kind'] == "ADD_USER":
@@ -102,5 +106,21 @@ class JamrService(object):
   def getWSKey(self, uuid):
     return self.dao.getKey(uuid)
 
+  def getUser(self,uid, inst, lon, lat):
+    return { "kind":"ADD_USER",
+      "model": 
+      {
+        "pos":{"lon":lon,"lat":lat}, 
+        "inst": inst, 
+        "genr":"rock", 
+        "uid":uid
+      }
+    }
 
+  def createFakeBand(self):
+    self.addUser(self.getUser("1", "guitar", "42.370641", "-71.080689"), ('127.0.0.1', 1234))
+    self.addUser(self.getUser("2", "guitar_base", "42.363158", "-71.079402"), ('127.0.0.1', 1235))
+    self.addUser(self.getUser("3", "sax", "42.371656", "-71.080432"), ('127.0.0.1', 1236))
+    self.addUser(self.getUser("4", "keyboard", "42.365822", "-71.093049"), ('127.0.0.1', 1237))
+  
 
