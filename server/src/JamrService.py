@@ -7,7 +7,7 @@ class JamrService(object):
     self.dao = JamrDao()
 
   def dispatch(self, message, peer_address):
-    print 'dispatch ' + str(message) + ' ' + str(peer_address)
+    #print 'dispatch ' + str(message) + ' ' + str(peer_address)
     
     jd = json.loads(message)
 
@@ -40,7 +40,7 @@ class JamrService(object):
     uuid = user['model']["uid"]
     self.putWSKey(uuid, peer_address)
     self.dao.insertUser(user['model'])
-    #self.doUsers()
+    self.getAllUsers()
 
   def createRoom(self, room, peer_address):
     self.dao.insertRoom(room['model'])
@@ -77,8 +77,8 @@ class JamrService(object):
   def getRoom(self,uid):
     return self.dao.getRoom(uid)
 
-  def doUsers():
-    print 'implement me'
+  def getAllUsers(self):
+    return self.dao.getAllUsers()
 
   def getObj(self, funcType, jsonBlob):
     return funcType().deserialize(jsonBlob)

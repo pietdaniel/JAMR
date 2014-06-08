@@ -8,16 +8,21 @@ UID1 = "abcd"
 UID2 = "efgh"
 UID3 = "fdsa"
 
-ADD_USER_MESS = json.dumps(
-  { "kind":"ADD_USER",
+def getUser(uid):
+  return { "kind":"ADD_USER",
     "model": 
     {
       "pos":{"lon":"1.0","lat":"1.1"}, 
       "inst":"guitar", 
       "genr":"rock", 
-      "uid":UID1
+      "uid":uid
     }
-  })
+  }
+
+
+ADD_USER_MESS = json.dumps(getUser(UID1))
+ADD_USER_MESS_2 = json.dumps(getUser(UID2))
+
 
 CREATE_MESS = json.dumps(
   { "kind":"CREATE",
@@ -62,9 +67,12 @@ class JamrServiceTest(unittest.TestCase):
     self.jamrService.dispatch(CREATE_MESS, PEER_ADDR)
     self.assertEqual(self.jamrService.getRoom(UID3)['uid'], UID3)    
 
+  def testGetAllUsers(self):
+    self.jamrService.dispatch(ADD_USER_MESS, PEER_ADDR)
+    self.jamrService.dispatch(ADD_USER_MESS_2, PEER_ADDR)
+    self.assertEqual(len(self.jamrService.getAllUsers()), 2)    
 
 if __name__ == "__main__":
     unittest.main()
 
 
-    
