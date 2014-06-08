@@ -13,7 +13,8 @@ class JamrService(object):
 
     if jd['kind'] == "ADD_USER":
       desr = self.getObj(models.RequestTypes.AddUser, jd)
-      return self.addUser(desr, peer_address)
+      self.addUser(desr, peer_address)
+      return self.getAllUsers()
 
     elif jd['kind'] == "INVITE":
       desr = self.getObj(models.RequestTypes.Invite, jd)
@@ -38,7 +39,6 @@ class JamrService(object):
     uuid = user['model']["uid"]
     self.putWSKey(uuid, peer_address)
     self.dao.insertUser(user['model'])
-    self.getAllUsers()
 
   def createRoom(self, room, peer_address):
     self.dao.insertRoom(room['model'])
