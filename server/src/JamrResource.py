@@ -23,8 +23,8 @@ class Server(WebSocket):
     def opened(self):
       print "Succesfully opened connection with peer " + str(self.peer_address)
       self.service.putWS(self.peer_address, self)
-      self.service.getAllUsers()
-      
+      return self.service.getAllUsers()
+
     def received_message(self, message):
       self.service.dispatch(message.data, self.peer_address)
 
