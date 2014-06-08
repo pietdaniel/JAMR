@@ -1,7 +1,7 @@
 define([], function() {
   var CreateUser = Backbone.Model.extend({
     defaults: {
-      kind: 'CREATE'
+      kind: 'ADD_USER'
     }
   });
   return CreateUser;
