@@ -26,6 +26,40 @@ define([
       e.preventDefault();
       var input = $(e.currentTarget.children[0]);
       console.log(input.val());
+
+      //send chat message
+      var message = {
+        "kind": "MESSAGE",
+        "model": {
+          "src_user": {
+            "pos": {
+              "lon": "1.0",
+              "lat": "1.1"
+            },
+            "inst": "guitar",
+            "genr": "rock",
+            "uid": "1"
+          },
+          "room": {
+            "users": [
+              {
+                "pos": {
+                  "lon": "1.0",
+                  "lat": "1.1"
+                },
+                "inst": "guitar",
+                "genr": "rock",
+                "uid": "1"
+              }
+            ],
+            "uid": 1
+          },
+          "msg": "TEST MESSAGE"
+        }
+      }
+
+      connection.send(JSON.stringify(message));
+
       input.val("");
     },
 
