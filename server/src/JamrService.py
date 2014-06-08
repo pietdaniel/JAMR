@@ -52,13 +52,16 @@ class JamrService(object):
     self.dao.getWebsocket(wskey).send(invite, False)
 
   def doLeave(self, leave, peer_address):
-    
+    roomObj = leave['model']['room']
+    roomId = roomObj['uid']
+    roomData = self.dao.getRoom(roomId)
+    roomUsers = roomData['users']
+    roomUsers.remove(leave['model']['src_user'])
+    roomData['users'] = roomUsers
+    self.dao.insertRoom(roomData)
+    for user in roomUsers:
+      self.dao.getWebsocket(wskey).send(leave, False)
 
-
-
-
-
-    
   def getObj(self, funcType, jsonDict):
     return funcType().deserialize(json.loads(jsonBlob))
 
