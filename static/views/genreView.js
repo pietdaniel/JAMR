@@ -1,7 +1,5 @@
-//filename: geoView.js
-
 define([
-  "text!templates/geo.html",
+  "text!templates/genre.html"
 ], function(template){
   return Backbone.View.extend({
     tagName: "div",
@@ -12,20 +10,18 @@ define([
     },
 
     events: {
-      "click #get-started": "getStarted",
+      "click #next": "next",
+    },
+
+    next: function() {
+      var genre = $('.ui-selected').attr('id');
+      this.remove();
     },
 
     render: function() {
-      //var template = _.template( $("#hello").html(), {} );
-      // Load the compiled HTML into the Backbone "el"
       this.$el.html( this.template );
+      this.delegateEvents();
       return this;
     },
-
-    getStarted: function() {
-      this.remove();
-      app.instr();
-    }
   });
 });
-
