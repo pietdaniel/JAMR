@@ -16,19 +16,19 @@ class JamrService(object):
       return self.addUser(desr, peer_address)
 
     elif jd['kind'] == "INVITE":
-      desr = getObj(models.RequestTypes.Invite, jd)
+      desr = self.getObj(models.RequestTypes.Invite, jd)
       return self.doInvite(desr, peer_address)
 
     elif jd['kind'] == "CREATE":
-      desr = getObj(models.RequestTypes.Create, jd)
+      desr = self.getObj(models.RequestTypes.Create, jd)
       return self.createRoom(desr, peer_address)
 
     elif jd['kind'] == "LEAVE":
-      desr = getObj(models.RequestTypes.Leave, jd)
+      desr = self.getObj(models.RequestTypes.Leave, jd)
       return self.doLeave(desr, peer_address)
 
     elif jd['kind'] == "MESSAGE":
-      desr = getObj(models.RequestTypes.Message, jd)
+      desr = self.getObj(models.RequestTypes.Message, jd)
       return self.doMessage(desr, peer_address)
 
     else:
@@ -43,7 +43,7 @@ class JamrService(object):
     #self.doUsers()
 
   def createRoom(self, room, peer_address):
-    self.dao.insertRoom(room)
+    self.dao.insertRoom(room['model'])
 
   def doMessage(self, msgObj, peer_address):
     roomObj = msgObj['model']['room']
@@ -73,6 +73,9 @@ class JamrService(object):
 
   def getUser(self,uid):
     return self.dao.getUser(uid)
+
+  def getRoom(self,uid):
+    return self.dao.getRoom(uid)
 
   def doUsers():
     print 'implement me'
