@@ -1,11 +1,9 @@
-var CreateUser = Backbone.Model.extend({
-  defaults: {
-    model: defaultUser,
-    kind: 'CREATE'
-  }
+define([], function() {
+  var CreateUser = Backbone.Model.extend({
+    defaults: {
+      kind: 'CREATE'
+    }
+  });
+  return CreateUser;
 });
 
-function createUser(user) {
-  var userToCreate = new CreateUser({model: user});
-  sendMessage(userToCreate);
-}
