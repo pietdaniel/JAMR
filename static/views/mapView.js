@@ -1,8 +1,9 @@
 define([
   "text!templates/map.html",
   "assets/js/leaflet.js",
-  "assets/js/handlebars-v1.3.0.js"
-], function(template, leaflet){
+  "assets/js/handlebars-v1.3.0.js",
+  "lib/sockets",
+], function(template, leaflet, Sockets){
   return Backbone.View.extend({
     tagName: "div",
     template: Handlebars.compile(template),
