@@ -1,8 +1,6 @@
 <h1 class="cover-heading">JAMR</h1>
-<p>
-      
-</p>
 <div id='map'></div>
+<div id='chat'><div>
 <script>
  window.map = L.map('map').setView([{{{geo.coords.latitude}}}, {{{geo.coords.longitude}}}], 13);
       console.log('users');
@@ -26,15 +24,20 @@
             iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
       });
+      var markers = []
       var marker = L.marker([{{geo.coords.latitude}}, {{geo.coords.longitude}}], {icon: meIcon});
+      app.me.set('marker', marker);
+      window.markers.push(marker);
       Stamen_Watercolor.addTo(map);
       Stamen_TonerLabels.addTo(map);
       marker.addTo(map);
-      var usersJson = JSON.parse(users);
-      for(var i = 0; i < usersJson.length; i++) {
-            var marker = L.marker([parseInt(usersJson[i].pos.lon), parseInt(usersJson[i].pos.lat)], {icon: meIcon});
+      for(var i = 0; i < users.length; i++) {
+            console.log(users[i].pos.lon);
+            var marker = L.marker([parseInt(users[i].pos.lon), parseInt(users[i].pos.lat)], {icon: meIcon});
+            users[i].marker = marker;
+            markers.push(marker);
             marker.addTo(map);
-            console.log(usersJson[i]);
+            console.log(users[i]);
       }
 </script>
 

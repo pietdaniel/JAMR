@@ -7,7 +7,8 @@ define([], function() {
       pos: {
         lat: 0,
         lon: 0
-      }
+      },
+      marker: {},
     }
   });
 

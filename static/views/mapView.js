@@ -12,11 +12,11 @@ define([
     usersCollection: [],
 
     initialize: function() {
-      debugger
+
     },
 
     events: {
-
+      "click .leaflet-marker-icon": "clickIcon",
     },
 
 
@@ -32,7 +32,7 @@ define([
       this.geo = geo;
     },
     createUser: function(geo, instrument, genre) {
-      var jsonUsers = JSON.parse(users);
+      //var jsonUsers = JSON.parse(users);
       var meIcon = L.icon({
             iconUrl: 'assets/img/icon512/me.png',
 
@@ -40,14 +40,16 @@ define([
             iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
       });
-      for(var i = 0; i < jsonUsers.length; i++){
-        var marker = L.marker([jsonUsers[i].pos.lon, jsonUsers[i].pos.lat]);
+      /*
+      for(var i = 0; i < users.length; i++){
+        var marker = L.marker([users[i].pos.lon, users[i].pos.lat]);
         marker.addTo(window.map);
-        console.log(jsonUsers[i]);
+        users[i].marker = marker;
+        console.log(users[i]);
         this.usersCollection.push({
-          inst: jsonUsers[i].inst
+          inst: users[i].inst
         });
-      }
+      }*/
       this.geo = geo;
       console.log(instrument + genre);
       console.log(geo);
@@ -73,5 +75,17 @@ define([
       this.delegateEvents();
       return this;
     },
+
+    clickIcon: function(e) {
+      e.preventDefault();
+      var clickedUser = _.find(users, function(user){
+        return (user.marker._icon == e.currentTarget);
+      });
+      console.log(clickedUser);
+      //create a room
+
+      //invite the user
+
+    }
   });
 });

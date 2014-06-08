@@ -27,12 +27,18 @@ var users = [];
 
 // Log messages from the server
 connection.onmessage = function (message) {
+    var data = JSON.parse(message.data);
+    //check if message is users
+    //TODO: set message metadata on server...
+    if (_.isArray(data) && _.has(data[0], "genr")) {
+    }
+
     console.log('Server: ' + message.data);
     var model = $.parseJSON(message.data);
     var type = model['kind'];
     if (users.length == 0) {
-        users = message.data;
-        console.log(users);
+        users = JSON.parse(message.data);
+        //console.log(users);
     }
     if (type === 'ADD_USER') {
         var userJson = $.parseJSON(message.data);
