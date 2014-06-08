@@ -8,34 +8,41 @@ class JamrService(object):
 
   def dispatch(self, message, peer_address):
     print 'dispatch ' + str(message) + ' ' + str(peer_address)
+    
     jd = json.loads(message)
+
     if jd['kind'] == "ADD_USER":
-      desr = getObj(RequestTypes.AddUser, jd)
-      return doAddUser(desr, peer_address)
+      desr = self.getObj(models.RequestTypes.AddUser, jd)
+      return self.addUser(desr, peer_address)
+
     elif jd['kind'] == "INVITE":
-      desr = getObj(RequestTypes.Invite, jd)
-      return doInvite(desr, peer_address)
+      desr = getObj(models.RequestTypes.Invite, jd)
+      return self.doInvite(desr, peer_address)
+
     elif jd['kind'] == "CREATE":
-      desr = getObj(RequestTypes.Create, jd)
-      return doCreate(desr, peer_address)
+      desr = getObj(models.RequestTypes.Create, jd)
+      return self.createRoom(desr, peer_address)
+
     elif jd['kind'] == "LEAVE":
-      desr = getObj(RequestTypes.Leave, jd)
-      return doLeave(desr, peer_address)
+      desr = getObj(models.RequestTypes.Leave, jd)
+      return self.doLeave(desr, peer_address)
+
     elif jd['kind'] == "MESSAGE":
-      desr = getObj(RequestTypes.Message, jd)
-      return doMessage(desr, peer_address)
-    else
+      desr = getObj(models.RequestTypes.Message, jd)
+      return self.doMessage(desr, peer_address)
+
+    else:
       print 'ERROR no message type for message: ' + str(message)
     
     # self.getWS(peer_address).send(str(peer_address), False)
 
-  def doAddUser(self, user, peer_address):
+  def addUser(self, user, peer_address):
     uuid = user['model']["uid"]
     self.putWSKey(uuid, peer_address)
-    self.dao.insertUser(user)
-    self.doUsers()
+    self.dao.insertUser(user['model'])
+    #self.doUsers()
 
-  def doCreate(self, room, peer_address):
+  def createRoom(self, room, peer_address):
     self.dao.insertRoom(room)
 
   def doMessage(self, msgObj, peer_address):
@@ -64,11 +71,14 @@ class JamrService(object):
       self.dao.getWebsocket(wskey).send(leave, False)
 
 
+  def getUser(self,uid):
+    return self.dao.getUser(uid)
+
   def doUsers():
     print 'implement me'
 
-  def getObj(self, funcType, jsonDict):
-    return funcType().deserialize(json.loads(jsonBlob))
+  def getObj(self, funcType, jsonBlob):
+    return funcType().deserialize(jsonBlob)
 
   def putWS(self, peer_address, ws):
     self.dao.insertWebsocket(peer_address, ws)
