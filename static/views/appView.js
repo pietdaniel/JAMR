@@ -1,13 +1,14 @@
 
 define([
-  "views/geoView"
-], function(GeoView){
+  "views/geoView",
+  "views/genreView"
+], function(GeoView, GenreView){
   return Backbone.View.extend({
     tagName: "div",
 
     initialize: function () {
       console.log("appView initialized");
-      this.subView = new GeoView();
+      this.subView = new GenreView();
       this.render();
     },
 
