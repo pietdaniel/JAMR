@@ -31,7 +31,7 @@ class Server(WebSocket):
     def __init__(self, *args, **kwargs):
       WebSocket.__init__(self,*args,**kwargs)
       self.service = JamrService()
-      self.createFakeBand()
+      #self.createFakeBand()
  
     def opened(self):
       self.service.putWS(self.peer_address, self)

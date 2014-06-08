@@ -9,8 +9,11 @@ class JamrService(object):
   def dispatch(self, message, peer_address):
     #print 'dispatch ' + str(message) + ' ' + str(peer_address)
     
-    jd = json.loads(message)
+    if(str(message) == "Ping" or str(message) == "1"):
+      return
 
+    jd = json.loads(message)
+  
     if jd['kind'] == "ADD_USER":
       desr = self.getObj(models.RequestTypes.AddUser, jd)
       self.addUser(desr, peer_address)
