@@ -1,6 +1,8 @@
 define([
-  "text!templates/genre.html"
-], function(template){
+  "text!templates/map.html",
+  "assets/js/leaflet.js",
+  "assets/js/handlebars-v1.3.0.js"
+], function(template, leaflet, Handlebars){
   return Backbone.View.extend({
     tagName: "div",
     template: template,
@@ -10,19 +12,14 @@ define([
     },
 
     events: {
-      "click #next": "next",
+
     },
 
-    next: function() {
-      var genre = $('.ui-selected').attr('id');
-      if(genre && genre.length > 0) {
-        this.remove();
-        app.map();
-      }
-    },
+
 
     render: function() {
       this.$el.html( this.template );
+      
       this.delegateEvents();
       return this;
     },

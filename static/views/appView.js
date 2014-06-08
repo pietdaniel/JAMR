@@ -1,8 +1,9 @@
 
 define([
   "views/geoView",
-  "views/genreView"
-], function(GeoView, GenreView){
+  "views/genreView",
+  "views/mapView"
+], function(GeoView, GenreView, MapView){
   return Backbone.View.extend({
     tagName: "div",
 
@@ -14,6 +15,11 @@ define([
 
     render: function() {
       this.$el.html(this.subView.$el);
+    },
+
+    map: function() {
+      var mapView = new MapView();
+      this.$el.html(mapView.$el);      
     }
   });
 });

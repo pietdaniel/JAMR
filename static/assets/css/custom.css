@@ -21,3 +21,8 @@
   font-size: 1.4em; 
   width: 50%; 
 }
+
+#map {
+  top: 25px;
+  height: 500px;
+}
