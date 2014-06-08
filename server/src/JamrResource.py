@@ -31,15 +31,17 @@ class Server(WebSocket):
     def __init__(self, *args, **kwargs):
       WebSocket.__init__(self,*args,**kwargs)
       self.service = JamrService()
-      self.createFakeBand()
+      #self.createFakeBand()
  
     def opened(self):
       self.service.putWS(self.peer_address, self)
       return self.service.getAllUsers()
 
     def received_message(self, message):
+      print type(message)
       print "Peer " + str(self.peer_address) + " send message: " + str(message)
-      self.service.dispatch(message.data, self.peer_address)
+      if( str(message) != "Ping"):
+        self.service.dispatch(message.data, self.peer_address)
 
     def createFakeBand(self):
       self.service.addUser(getUser(1, "guitar", "42.370641", "-71.080689"), ('127.0.0.1', 1234))
